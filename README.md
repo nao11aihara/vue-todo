@@ -13,7 +13,7 @@
 | [TypeScript](https://www.typescriptlang.org/) | 4.1.5      | 静的型付け + クラスベースオブジェクト指向の JavaScript スーパーセット言語 |
 | [Vue Router](https://router.vuejs.org/ja/)    | 3.2.0      | Vue.js ルータライブラリ                                                   |
 | [Vuex](https://vuex.vuejs.org/ja/)            | 3.4.0      | Vue.js 状態管理ライブラリ                                                 |
-| [Vuetify](https://vuetifyjs.com/ja/)          | xxxx       | Vue.js マテリアル UI ライブラリ                                           |
+| [Vuetify](https://vuetifyjs.com/ja/)          | 2.4.0      | Vue.js マテリアル UI ライブラリ                                           |
 
 ## ローカル環境構築・アプリケーション起動手順
 
