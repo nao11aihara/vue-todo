@@ -3,13 +3,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
+/**
+ * TODO編集画面
+ */
 @Component({
   components: {},
 })
 export default class Edit extends Vue {}
 </script>
 
-<style>
-</style>
+<style scoped></style>

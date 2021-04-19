@@ -1,14 +1,19 @@
 <template>
-  <div id="app">
-    <Header title="TODOリスト"/>
-    <router-view/>
-  </div>
+  <v-app>
+    <Header />
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Header from './components/Header.vue';
+import { Component, Vue } from "vue-property-decorator";
+import Header from "./components/Header.vue";
 
+/**
+ * App
+ */
 @Component({
   components: {
     Header,
@@ -18,4 +23,7 @@ export default class App extends Vue {}
 </script>
 
 <style>
+a {
+  text-decoration: none;
+}
 </style>
