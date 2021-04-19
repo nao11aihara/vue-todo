@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Top from '../views/Top.vue'
+import Register from '../views/Register.vue'
+import Edit from '../views/Edit.vue'
 import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
@@ -9,11 +10,15 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    component: Home
+    component: Top
   },
   {
-    path: '/about',
-    component: About
+    path: '/register',
+    component: Register
+  },
+  {
+    path: '/edit/:id',
+    component: Edit
   },
   {
     path: '*',
