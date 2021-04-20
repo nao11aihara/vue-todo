@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <v-card>
     <v-app-bar app color="teal lighten-3">
       <v-app-bar-nav-icon @click="sideMenu = true"></v-app-bar-nav-icon>
       <v-toolbar-title>
@@ -22,7 +22,7 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  </header>
+  </v-card>
 </template>
 
 <script lang="ts">

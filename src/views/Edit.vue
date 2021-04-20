@@ -1,5 +1,7 @@
 <template>
-  <p>id:{{ $route.params.id }}の編集画面</p>
+  <v-main>
+    <p>id:{{ $route.params.id }}の編集画面</p>
+  </v-main>
 </template>
 
 <script lang="ts">
