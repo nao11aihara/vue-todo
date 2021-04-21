@@ -1,17 +1,20 @@
 <template>
   <v-main>
-    <p>id:{{ $route.params.id }}の編集画面</p>
+    <TodoEditForm />
   </v-main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import TodoEditForm from "./../components/TodoEditForm.vue";
 
 /**
  * TODO編集画面
  */
 @Component({
-  components: {},
+  components: {
+    TodoEditForm,
+  },
 })
 export default class Edit extends Vue {}
 </script>
