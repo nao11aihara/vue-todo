@@ -25,7 +25,7 @@
             <v-checkbox v-model="todo.status"></v-checkbox>
           </td>
           <td>
-            <v-btn icon>
+            <v-btn icon @click="toEdit(todo.id)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
           </td>
@@ -49,10 +49,10 @@ import { Todo } from "./../types/Todo";
  */
 @Component
 export default class TodoList extends Vue {
+  // ---data---
   /**
-   * data
+   * TODO一覧
    */
-  // TODO一覧
   public todos: Todo[] = [
     {
       id: 1,
@@ -76,11 +76,24 @@ export default class TodoList extends Vue {
     },
   ];
 
-  // ステータス一覧
+  /**
+   * ステータス一覧
+   */
   public statusList = ["全て", "未完了", "完了"];
 
-  // 選択中のステータス
+  /**
+   * 選択中のステータス
+   */
   public selectedStatus = "全て";
+
+  // ---メソッド---
+  /**
+   * 編集画面に遷移する
+   * @param id ID
+   */
+  public toEdit(id: number): void {
+    this.$router.push(`/edit/${id}`);
+  }
 }
 </script>
 
