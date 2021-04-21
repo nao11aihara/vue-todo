@@ -1,12 +1,14 @@
 <template>
   <v-main>
     <SearchForm />
+    <TodoList />
   </v-main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SearchForm from "./../components/SearchForm.vue";
+import TodoList from "./../components/TodoList.vue";
 
 /**
  * トップ画面
@@ -14,6 +16,7 @@ import SearchForm from "./../components/SearchForm.vue";
 @Component({
   components: {
     SearchForm,
+    TodoList,
   },
 })
 export default class Top extends Vue {}
