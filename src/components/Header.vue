@@ -33,10 +33,10 @@ import { Component, Vue } from "vue-property-decorator";
  */
 @Component
 export default class Header extends Vue {
+  // ---data---
   /**
-   * data
+   * サイドメニュー表示
    */
-  // サイドメニュー表示
   public sideMenu = false;
 }
 </script>
