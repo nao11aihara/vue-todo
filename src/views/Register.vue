@@ -1,17 +1,20 @@
 <template>
   <v-main>
-    <p>登録画面</p>
+    <TodoRegisterForm />
   </v-main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import TodoRegisterForm from "../components/TodoRegisterForm.vue";
 
 /**
  * TODO登録画面
  */
 @Component({
-  components: {},
+  components: {
+    TodoRegisterForm,
+  },
 })
 export default class Register extends Vue {}
 </script>
