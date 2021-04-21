@@ -19,7 +19,7 @@ export default class SearchForm extends Vue {}
 
 <style scoped>
 .v-card {
-  margin: 40px;
-  padding: 30px 40px 0;
+  margin: 40px 80px;
+  padding: 30px 60px 0;
 }
 </style>
