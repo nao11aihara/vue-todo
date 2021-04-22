@@ -11,10 +11,10 @@
 import { Component, Vue } from "vue-property-decorator";
 
 /**
- * 検索フォーム
+ * TODO検索フォーム
  */
 @Component
-export default class SearchForm extends Vue {}
+export default class TodoSearchForm extends Vue {}
 </script>
 
 <style scoped>

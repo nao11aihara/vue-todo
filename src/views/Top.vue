@@ -1,13 +1,13 @@
 <template>
   <v-main>
-    <SearchForm />
+    <TodoSearchForm />
     <TodoList />
   </v-main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SearchForm from "./../components/SearchForm.vue";
+import TodoSearchForm from "../components/TodoSearchForm.vue";
 import TodoList from "./../components/TodoList.vue";
 
 /**
@@ -15,7 +15,7 @@ import TodoList from "./../components/TodoList.vue";
  */
 @Component({
   components: {
-    SearchForm,
+    TodoSearchForm,
     TodoList,
   },
 })
