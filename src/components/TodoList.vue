@@ -22,7 +22,7 @@
         <tr v-for="todo in todos" :key="todo.title">
           <td>{{ todo.title }}</td>
           <td>
-            <v-checkbox v-model="todo.status"></v-checkbox>
+            <v-checkbox v-model="todo.isDone"></v-checkbox>
           </td>
           <td>
             <v-btn icon @click="toEdit(todo.id)">
@@ -57,22 +57,22 @@ export default class TodoList extends Vue {
     {
       id: 1,
       title: "散歩",
-      status: false,
+      isDone: false,
     },
     {
       id: 2,
       title: "勉強",
-      status: false,
+      isDone: false,
     },
     {
       id: 3,
       title: "買い物",
-      status: true,
+      isDone: true,
     },
     {
       id: 4,
       title: "料理",
-      status: true,
+      isDone: true,
     },
   ];
 
