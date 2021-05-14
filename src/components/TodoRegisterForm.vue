@@ -8,7 +8,7 @@
       :error="isErrorTitle"
       :error-messages="errorMessage"
     ></v-text-field>
-    <v-btn :disabled="isDisabled">登録</v-btn>
+    <v-btn :disabled="isDisabled" @click="registerTodo()">登録</v-btn>
   </v-card>
 </template>
 
@@ -56,6 +56,17 @@ export default class TodoRegisterForm extends Vue {
       return true;
     }
     return false;
+  }
+
+  // ---メソッド---
+  /**
+   * TODOを登録する
+   */
+  public registerTodo(): void {
+    this.$store.dispatch("registerTodo", {
+      title: this.inputTitle,
+    });
+    this.$router.push("/");
   }
 }
 </script>
