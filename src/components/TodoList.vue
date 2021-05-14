@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="todo in todos" :key="todo.title">
+        <tr v-for="todo in allTodos" :key="todo.title">
           <td>{{ todo.title }}</td>
           <td>
             <v-checkbox v-model="todo.isDone"></v-checkbox>
@@ -51,32 +51,6 @@ import { Todo } from "./../types/Todo";
 export default class TodoList extends Vue {
   // ---data---
   /**
-   * TODO一覧
-   */
-  public todos: Todo[] = [
-    {
-      id: 1,
-      title: "散歩",
-      isDone: false,
-    },
-    {
-      id: 2,
-      title: "勉強",
-      isDone: false,
-    },
-    {
-      id: 3,
-      title: "買い物",
-      isDone: true,
-    },
-    {
-      id: 4,
-      title: "料理",
-      isDone: true,
-    },
-  ];
-
-  /**
    * ステータス一覧
    */
   public statusList = ["全て", "未完了", "完了"];
@@ -85,6 +59,20 @@ export default class TodoList extends Vue {
    * 選択中のステータス
    */
   public selectedStatus = "全て";
+
+  // ---computed---
+  /**
+   * TODO全件
+   * @returns TODO全件
+   */
+  public get allTodos(): Todo[] {
+    return this.$store.getters.getAllTodos;
+  }
+
+  // ---ライフサイクル---
+  public created() {
+    console.warn(this.allTodos);
+  }
 
   // ---メソッド---
   /**
