@@ -1,4 +1,5 @@
 import { RegisterTodoPayload } from "@/types/RegisterTodoPayload";
+import { UpdateTodoPayload } from "@/types/UpdateTodoPayload";
 import Vue from "vue";
 import Vuex, { Store } from "vuex";
 import { Todo } from "./../types/Todo";
@@ -40,7 +41,7 @@ const getters = {
    * @param id
    * @returns 指定IDのTODO1件
    */
-  getTodoById(state: State, id: number): Todo | undefined {
+  getTodoById: (state: State) => (id: number | undefined): Todo | undefined => {
     return state.todos.find((todo) => todo.id === id);
   },
 };
@@ -59,6 +60,17 @@ const mutations = {
   registerTodo(state: State, todo: Todo): void {
     state.todos.push(todo);
     state.sequence++;
+  },
+  /**
+   * TODOを更新する
+   * @param state
+   * @param todo
+   */
+  updateTodo(state: State, payload: UpdateTodoPayload): void {
+    const index = state.todos.findIndex((todo) => todo.id === payload.id);
+    if (index >= 0) {
+      state.todos[index].title = payload.title;
+    }
   },
 };
 
@@ -80,6 +92,14 @@ const actions = {
       isDone: false,
     };
     commit("registerTodo", todo);
+  },
+  /**
+   * TODOを更新する
+   * @param commit
+   * @param payload
+   */
+  updateTodo({ commit }: any, payload: UpdateTodoPayload): void {
+    commit("updateTodo", payload);
   },
 };
 
