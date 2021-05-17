@@ -33,8 +33,8 @@ export default class TodoRegisterForm extends Vue {
 
   // ---computed---
   /**
-   *  タイトルのエラー判定
-   *  @returns エラー判定
+   * タイトルのエラー判定
+   * @returns エラー判定
    */
   public get isErrorTitle(): boolean {
     // タイトル30文字以上はバリデーションエラー
