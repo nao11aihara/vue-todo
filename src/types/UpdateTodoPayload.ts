@@ -1,7 +1,6 @@
+import { Todo } from "./Todo";
+
 /**
  * UpdateTodoPayload型
  */
-export type UpdateTodoPayload = {
-  id: number;
-  title: string;
-};
+export type UpdateTodoPayload = Pick<Todo, "id" | "title">;

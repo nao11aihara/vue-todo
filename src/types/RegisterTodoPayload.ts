@@ -1,6 +1,6 @@
+import { Todo } from "./Todo";
+
 /**
  * RegisterTodoPayload型
  */
-export type RegisterTodoPayload = {
-  title: string;
-};
+export type RegisterTodoPayload = Pick<Todo, "title">;
