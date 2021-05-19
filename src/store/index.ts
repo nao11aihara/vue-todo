@@ -1,3 +1,4 @@
+import { DaleteTodoPayload } from "@/types/DaleteTodoPayload";
 import { RegisterTodoPayload } from "@/types/RegisterTodoPayload";
 import { UpdateTodoPayload } from "@/types/UpdateTodoPayload";
 import Vue from "vue";
@@ -35,6 +36,7 @@ const getters = {
   getAllTodos(state: State): Todo[] {
     return state.todos;
   },
+
   /**
    * 指定IDのTODO1件を取得
    * @param state
@@ -61,15 +63,32 @@ const mutations = {
     state.todos.push(todo);
     state.sequence++;
   },
+
   /**
    * TODOを更新する
    * @param state
-   * @param todo
+   * @param payload
    */
   updateTodo(state: State, payload: UpdateTodoPayload): void {
     const index = state.todos.findIndex((todo) => todo.id === payload.id);
+
+    // 配列のindex番目の要素のタイトルを更新
     if (index >= 0) {
       state.todos[index].title = payload.title;
+    }
+  },
+
+  /**
+   * TODOを削除する
+   * @param state
+   * @param payload
+   */
+  daleteTodo(state: State, payload: DaleteTodoPayload): void {
+    const index = state.todos.findIndex((todo) => todo.id === payload.id);
+
+    // 配列のindex番目から要素を1つ削除
+    if (index >= 0) {
+      state.todos.splice(index, 1);
     }
   },
 };
@@ -93,6 +112,7 @@ const actions = {
     };
     commit("registerTodo", todo);
   },
+
   /**
    * TODOを更新する
    * @param commit
@@ -100,6 +120,15 @@ const actions = {
    */
   updateTodo({ commit }: any, payload: UpdateTodoPayload): void {
     commit("updateTodo", payload);
+  },
+
+  /**
+   * TODOを削除する
+   * @param commit
+   * @param payload
+   */
+  daleteTodo({ commit }: any, payload: DaleteTodoPayload): void {
+    commit("daleteTodo", payload);
   },
 };
 

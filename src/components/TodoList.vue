@@ -30,7 +30,7 @@
             </v-btn>
           </td>
           <td>
-            <v-btn icon>
+            <v-btn icon @click="daleteTodo(todo.id)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </td>
@@ -81,6 +81,19 @@ export default class TodoList extends Vue {
    */
   public toEdit(id: number): void {
     this.$router.push(`/edit/${id}`);
+  }
+
+  /**
+   * TODOを削除する
+   * @param id ID
+   */
+  public daleteTodo(id: number): void {
+    const confirm: boolean = window.confirm("TODOを削除してよろしいですか?");
+
+    // confirmがtrueの場合、指定IDのTODOを削除
+    if (confirm) {
+      this.$store.dispatch("daleteTodo", { id });
+    }
   }
 }
 </script>
