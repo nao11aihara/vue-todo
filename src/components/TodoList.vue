@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { Todo } from "./../types/Todo";
 
 /**
@@ -58,12 +58,6 @@ import { Todo } from "./../types/Todo";
 export default class TodoList extends Vue {
   // ---data---
   /**
-   * TODO複数件
-   */
-  @Prop()
-  public todos: Todo[];
-
-  /**
    * ステータス一覧
    */
   public statusList = ["全て", "未完了", "完了"];
@@ -72,6 +66,33 @@ export default class TodoList extends Vue {
    * 選択中のステータス
    */
   public selectedStatus = "全て";
+
+  // ---computed---
+  /**
+   * TODO複数件
+   * @returns TODO複数件
+   */
+  public get todos(): Todo[] {
+    const todos: Todo[] = this.$store.getters.getAllTodos;
+
+    // クエリストリングがない場合、全件返す
+    if (!this.$route.query.title) {
+      return todos;
+    }
+
+    // クエリストリングがある場合、タイトルに部分一致したもののみ返す
+    return todos.filter(
+      (todo) => todo.title.indexOf(String(this.$route.query.title)) != -1
+    );
+  }
+
+  // ---ライフサイクル---
+  /**
+   * created
+   */
+  public created(): void {
+    console.warn(this.todos);
+  }
 
   // ---メソッド---
   /**
