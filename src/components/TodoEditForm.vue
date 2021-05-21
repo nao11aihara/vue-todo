@@ -70,7 +70,7 @@ export default class TodoEditForm extends Vue {
   }
 
   // ---ライフサイクル---
-  public created() {
+  public created(): void {
     // 正規表現:0以上の整数のみ
     //
     // ^: 行の先頭にマッチ
