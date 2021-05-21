@@ -1,6 +1,13 @@
 <template>
   <v-card>
-    <v-card-subtitle>「xxxx」の検索結果：xx件</v-card-subtitle>
+    <!-- 検索ワード有の場合、検索ワードと検索ヒット件数を表示 -->
+    <v-card-subtitle v-if="$route.query.title">{{
+      `「${$route.query.title}」の検索結果：${todos.length}件`
+    }}</v-card-subtitle>
+    <!-- 検索ワード無の場合、全件の件数を表示 -->
+    <v-card-subtitle v-else>{{
+      `全件表示：${todos.length}件`
+    }}</v-card-subtitle>
     <v-radio-group v-model="selectedStatus" row>
       <v-radio
         v-for="status in statusList"
@@ -19,10 +26,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="todo in allTodos" :key="todo.title">
+        <tr v-for="todo in todos" :key="todo.id">
           <td>{{ todo.title }}</td>
           <td>
-            <v-checkbox v-model="todo.isDone"></v-checkbox>
+            <v-checkbox :value="todo.isDone"></v-checkbox>
           </td>
           <td>
             <v-btn icon @click="toEdit(todo.id)">
@@ -41,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { Todo } from "./../types/Todo";
 
 /**
@@ -51,6 +58,12 @@ import { Todo } from "./../types/Todo";
 export default class TodoList extends Vue {
   // ---data---
   /**
+   * TODO複数件
+   */
+  @Prop()
+  public todos: Todo[];
+
+  /**
    * ステータス一覧
    */
   public statusList = ["全て", "未完了", "完了"];
@@ -59,20 +72,6 @@ export default class TodoList extends Vue {
    * 選択中のステータス
    */
   public selectedStatus = "全て";
-
-  // ---computed---
-  /**
-   * TODO全件
-   * @returns TODO全件
-   */
-  public get allTodos(): Todo[] {
-    return this.$store.getters.getAllTodos;
-  }
-
-  // ---ライフサイクル---
-  public created() {
-    console.warn(this.allTodos);
-  }
 
   // ---メソッド---
   /**
