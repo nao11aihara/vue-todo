@@ -24,7 +24,7 @@
 | [Vue Router](https://router.vuejs.org/ja/)                                   | 3.2.0      | Vue.js ルータライブラリ                                                   |
 | [Vuex](https://vuex.vuejs.org/ja/)                                           | 3.4.0      | Vue.js 状態管理ライブラリ                                                 |
 | [Vuetify](https://vuetifyjs.com/ja/)                                         | 2.4.0      | Vue.js マテリアル UI ライブラリ                                           |
-| [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate) | 2.4.0      | ページリロードしても Vuex の state を保持出来るようにする ライブラリ      |
+| [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate) | 4.0.0      | ページリロードしても Vuex の state を保持出来るようにする ライブラリ      |
 
 ## ローカル環境構築・アプリケーション起動手順
 
