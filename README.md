@@ -16,14 +16,15 @@
 
 ## 使用技術要素
 
-| 技術要素名                                    | バージョン | 説明                                                                      |
-| --------------------------------------------- | ---------- | ------------------------------------------------------------------------- |
-| [Vue.js](https://jp.vuejs.org/index.html)     | 2.6.11     | JavaScript フレームワーク                                                 |
-| [VueCLI](https://cli.vuejs.org/)              | 4.5.12     | Vue.js 開発用標準ツール                                                   |
-| [TypeScript](https://www.typescriptlang.org/) | 4.1.5      | 静的型付け + クラスベースオブジェクト指向の JavaScript スーパーセット言語 |
-| [Vue Router](https://router.vuejs.org/ja/)    | 3.2.0      | Vue.js ルータライブラリ                                                   |
-| [Vuex](https://vuex.vuejs.org/ja/)            | 3.4.0      | Vue.js 状態管理ライブラリ                                                 |
-| [Vuetify](https://vuetifyjs.com/ja/)          | 2.4.0      | Vue.js マテリアル UI ライブラリ                                           |
+| 技術要素名                                                                   | バージョン | 説明                                                                      |
+| ---------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------- |
+| [Vue.js](https://jp.vuejs.org/index.html)                                    | 2.6.11     | JavaScript フレームワーク                                                 |
+| [VueCLI](https://cli.vuejs.org/)                                             | 4.5.12     | Vue.js 開発用標準ツール                                                   |
+| [TypeScript](https://www.typescriptlang.org/)                                | 4.1.5      | 静的型付け + クラスベースオブジェクト指向の JavaScript スーパーセット言語 |
+| [Vue Router](https://router.vuejs.org/ja/)                                   | 3.2.0      | Vue.js ルータライブラリ                                                   |
+| [Vuex](https://vuex.vuejs.org/ja/)                                           | 3.4.0      | Vue.js 状態管理ライブラリ                                                 |
+| [Vuetify](https://vuetifyjs.com/ja/)                                         | 2.4.0      | Vue.js マテリアル UI ライブラリ                                           |
+| [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate) | 2.4.0      | ページリロードしても Vuex の state を保持出来るようにする ライブラリ      |
 
 ## ローカル環境構築・アプリケーション起動手順
 
