@@ -29,7 +29,10 @@
         <tr v-for="todo in todos" :key="todo.id">
           <td>{{ todo.title }}</td>
           <td>
-            <v-checkbox :value="todo.isDone"></v-checkbox>
+            <v-checkbox
+              :input-value="todo.isDone"
+              @change="changeIsDone(todo.id)"
+            ></v-checkbox>
           </td>
           <td>
             <v-btn icon @click="toEdit(todo.id)">
@@ -95,6 +98,13 @@ export default class TodoList extends Vue {
   }
 
   // ---メソッド---
+  /**
+   * 作業ステータスを切り替える
+   */
+  public changeIsDone(id: number): void {
+    this.$store.dispatch("changeIsDone", { id });
+  }
+
   /**
    * 編集画面に遷移する
    * @param id ID

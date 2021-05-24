@@ -1,3 +1,4 @@
+import { ChangeIsDonePayload } from "@/types/ChangeIsDonePayload";
 import { DaleteTodoPayload } from "@/types/DaleteTodoPayload";
 import { RegisterTodoPayload } from "@/types/RegisterTodoPayload";
 import { UpdateTodoPayload } from "@/types/UpdateTodoPayload";
@@ -91,6 +92,20 @@ const mutations = {
       state.todos.splice(index, 1);
     }
   },
+
+  /**
+   * TODOの作業ステータスを変更する
+   * @param state
+   * @param payload
+   */
+  changeIsDone(state: State, payload: ChangeIsDonePayload): void {
+    const index = state.todos.findIndex((todo) => todo.id === payload.id);
+
+    // 配列のindex番目の要素の作業ステータスを反転
+    if (index >= 0) {
+      state.todos[index].isDone = !state.todos[index].isDone;
+    }
+  },
 };
 
 /**
@@ -129,6 +144,15 @@ const actions = {
    */
   daleteTodo({ commit }: any, payload: DaleteTodoPayload): void {
     commit("daleteTodo", payload);
+  },
+
+  /**
+   * TODOの作業ステータスを変更する
+   * @param commit
+   * @param payload
+   */
+  changeIsDone({ commit }: any, payload: ChangeIsDonePayload): void {
+    commit("changeIsDone", payload);
   },
 };
 
