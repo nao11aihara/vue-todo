@@ -5,6 +5,7 @@ import { UpdateTodoPayload } from "@/types/UpdateTodoPayload";
 import Vue from "vue";
 import Vuex, { Store } from "vuex";
 import { Todo } from "./../types/Todo";
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
@@ -161,4 +162,5 @@ export const store: Store<State> = new Vuex.Store({
   getters,
   mutations,
   actions,
+  plugins: [createPersistedState()],
 });
