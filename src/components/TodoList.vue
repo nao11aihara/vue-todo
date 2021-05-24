@@ -2,11 +2,11 @@
   <v-card>
     <!-- 検索ワード有の場合、検索ワードと検索ヒット件数を表示 -->
     <v-card-subtitle v-if="$route.query.title">{{
-      `「${$route.query.title}」の検索結果：${todos.length}件`
+      `「${$route.query.title}」の検索結果 × ステータス「${selectedStatus}」：${todos.length}件`
     }}</v-card-subtitle>
     <!-- 検索ワード無の場合、全件の件数を表示 -->
     <v-card-subtitle v-else>{{
-      `全件表示：${todos.length}件`
+      `全件 × ステータス「${selectedStatus}」：${todos.length}件`
     }}</v-card-subtitle>
     <v-radio-group v-model="selectedStatus" row>
       <v-radio
@@ -78,15 +78,49 @@ export default class TodoList extends Vue {
   public get todos(): Todo[] {
     const todos: Todo[] = this.$store.getters.getAllTodos;
 
-    // クエリストリングがない場合、全件返す
-    if (!this.$route.query.title) {
-      return todos;
+    // クエリストリング：あり（タイトルに部分一致したもののみ返す）
+    // 選択中のステータス:完了
+    if (this.$route.query.title && this.selectedStatus === "完了") {
+      return todos.filter(
+        (todo) =>
+          todo.title.indexOf(String(this.$route.query.title)) != -1 &&
+          todo.isDone === true
+      );
     }
 
-    // クエリストリングがある場合、タイトルに部分一致したもののみ返す
-    return todos.filter(
-      (todo) => todo.title.indexOf(String(this.$route.query.title)) != -1
-    );
+    // クエリストリング：あり（タイトルに部分一致したもののみ返す）
+    // 選択中のステータス:未完了
+    if (this.$route.query.title && this.selectedStatus === "未完了") {
+      return todos.filter(
+        (todo) =>
+          todo.title.indexOf(String(this.$route.query.title)) != -1 &&
+          todo.isDone === false
+      );
+    }
+
+    // クエリストリング：あり（タイトルに部分一致したもののみ返す）
+    // 選択中のステータス:全て
+    if (this.$route.query.title && this.selectedStatus === "全て") {
+      return todos.filter(
+        (todo) => todo.title.indexOf(String(this.$route.query.title)) != -1
+      );
+    }
+
+    // クエリストリング：なし
+    // 選択中のステータス:完了
+    if (!this.$route.query.title && this.selectedStatus === "完了") {
+      return todos.filter((todo) => todo.isDone === true);
+    }
+
+    // クエリストリング：なし
+    // 選択中のステータス:未完了
+    if (!this.$route.query.title && this.selectedStatus === "未完了") {
+      return todos.filter((todo) => todo.isDone === false);
+    }
+
+    // クエリストリング：なし
+    // 選択中のステータス:全て
+    return todos;
   }
 
   // ---ライフサイクル---
@@ -94,7 +128,7 @@ export default class TodoList extends Vue {
    * created
    */
   public created(): void {
-    console.warn(this.todos);
+    console.log(this.todos);
   }
 
   // ---メソッド---
